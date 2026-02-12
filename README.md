@@ -116,12 +116,42 @@ $ ./cargo test
 
 ### Starting a local testnet
 
-Start your own testnet locally, instructions are in the [online docs](https://docs.solanalabs.com/clusters/benchmark).
+After building, start a local Forklana validator with a single command:
 
-### Accessing the remote development cluster
+```bash
+$ solana-test-validator
+```
 
-- `devnet` - stable public cluster for development accessible via
-  devnet.solana.com. Runs 24/7. Learn more about the [public clusters](https://docs.solanalabs.com/clusters)
+This launches a local node with RPC available at:
+
+```
+http://localhost:8899
+```
+
+You can verify it's running:
+
+```bash
+$ solana --url http://localhost:8899 cluster-version
+```
+
+Airdrop SOL to yourself for testing:
+
+```bash
+$ solana --url http://localhost:8899 airdrop 100
+```
+
+Then paste `http://localhost:8899` as the custom RPC in Backpack Wallet to connect.
+
+### Running a public RPC node
+
+To make your Forklana node accessible to others:
+
+1. **Set up a server** with at least 12 CPU cores, 128GB RAM, and an NVMe SSD.
+2. **Clone and build** Forklana on the server (see [Building](#building) above).
+3. **Run the validator** — it will expose RPC on port `8899` by default.
+4. **Open port 8899** in your firewall.
+5. Your public RPC URL is `http://<your-server-ip>:8899`.
+6. Optionally place it behind a reverse proxy with a domain (e.g. `https://rpc.forklana.com`).
 
 # Benchmarking
 
