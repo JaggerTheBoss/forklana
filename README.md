@@ -1,22 +1,41 @@
-# PLEASE READ: This repo is now a public archive
-
-This repo still exists in archived form, feel free to fork any reference
-implementations it still contains.
-
-See Agave, the Solana validator implementation from Anza: https://github.com/anza-xyz/agave
-
----
-
 <p align="center">
-  <a href="https://solana.com">
-    <img alt="Solana" src="https://i.imgur.com/IKyzQ6T.png" width="250" />
+  <a href="https://github.com/JaggerTheBoss/forklana">
+    <img alt="Forklana" src="https://i.imgur.com/IKyzQ6T.png" width="250" />
   </a>
 </p>
 
-[![Solana crate](https://img.shields.io/crates/v/solana-core.svg)](https://crates.io/crates/solana-core)
-[![Solana documentation](https://docs.rs/solana-core/badge.svg)](https://docs.rs/solana-core)
-[![Build status](https://badge.buildkite.com/8cc350de251d61483db98bdfc895b9ea0ac8ffa4a32ee850ed.svg?branch=master)](https://buildkite.com/solana-labs/solana/builds?branch=master)
-[![codecov](https://codecov.io/gh/solana-labs/solana/branch/master/graph/badge.svg)](https://codecov.io/gh/solana-labs/solana)
+# Forklana
+
+**Forklana** is a fork of [Solana](https://github.com/solana-labs/solana) with a **minimum 0.02 SOL transaction fee** designed to eradicate transaction bundles (MEV bundles). By enforcing a higher base fee, Forklana makes sandwich attacks, frontrunning, and other MEV bundle strategies economically unviable, creating a fairer network for all users.
+
+## Key Difference from Solana
+
+| | Solana | Forklana |
+|---|---|---|
+| **Minimum Transaction Fee** | ~0.000005 SOL | **0.02 SOL** |
+| **MEV Bundles** | Rampant | Economically unviable |
+| **Sandwich Attacks** | Common | Eradicated |
+
+The 0.02 SOL minimum fee makes it prohibitively expensive to spam the network with the large volumes of transactions required for bundle-based MEV extraction. Bundlers rely on razor-thin margins across many transactions — a higher base fee destroys that model entirely.
+
+---
+
+## Connecting to Forklana with Backpack Wallet
+
+[Backpack](https://backpack.app/) is the recommended wallet for connecting to the Forklana network.
+
+### Steps
+
+1. **Install Backpack** — Download from [backpack.app](https://backpack.app/) and create or import a wallet.
+2. **Open Settings** — Click the settings icon in the top-right corner of the Backpack wallet.
+3. **Navigate to Solana settings** — Go to **Preferences > Solana**.
+4. **Set a custom RPC** — Select **RPC Connection > Custom**.
+5. **Enter the Forklana RPC URL** — Paste your Forklana validator's RPC endpoint into the field and click **Switch**.
+6. **Confirm** — A checkmark will appear confirming the connection. Your Backpack wallet is now connected to Forklana.
+
+> **Note:** You will need the RPC URL of a running Forklana validator node. See the [Starting a local testnet](#starting-a-local-testnet) section below for how to run your own node.
+
+---
 
 # Building
 
@@ -60,8 +79,8 @@ $ sudo dnf install openssl-devel systemd-devel pkg-config zlib-devel llvm clang 
 ## **2. Download the source code.**
 
 ```bash
-$ git clone https://github.com/solana-labs/solana.git
-$ cd solana
+$ git clone https://github.com/JaggerTheBoss/forklana.git
+$ cd forklana
 ```
 
 ## **3. Build.**
