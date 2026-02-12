@@ -1,3 +1,6 @@
+// Forklana: Fee distribution handles the higher 0.02 SOL minimum fees.
+// Increased per-tx revenue is distributed to validators as normal.
+// TODO(forklana): consider adjusting burn_percent for the elevated fee regime
 use {
     super::Bank,
     log::{debug, warn},

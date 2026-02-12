@@ -1,3 +1,7 @@
+// Forklana: The transaction processor orchestrates fee lookups via
+// TransactionProcessingCallback. The 0.02 SOL minimum propagates from
+// FeeRateGovernor through get_last_blockhash_and_lamports_per_signature().
+// TODO(forklana): add integration test asserting minimum fee propagation
 use {
     crate::{
         account_loader::{

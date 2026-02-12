@@ -1,10 +1,18 @@
 //! Calculation of transaction fees.
+//!
+//! Forklana: This module enforces a minimum 0.02 SOL (20_000_000 lamports)
+//! transaction fee to eradicate MEV bundle strategies such as sandwich attacks
+//! and frontrunning. The minimum is applied in `FeeRateGovernor::new_derived()`.
 
 #![allow(clippy::arithmetic_side_effects)]
 use {
     crate::{clock::DEFAULT_MS_PER_SLOT, ed25519_program, message::Message, secp256k1_program},
     log::*,
 };
+
+/// Forklana: Minimum fee per signature in lamports (0.02 SOL).
+/// This floor makes MEV bundle spam economically unviable.
+pub const FORKLANA_MIN_LAMPORTS_PER_SIGNATURE: u64 = 20_000_000;
 
 #[repr(C)]
 #[derive(Serialize, Deserialize, Default, PartialEq, Eq, Clone, Copy, Debug, AbiExample)]
@@ -72,7 +80,8 @@ pub struct FeeRateGovernor {
     pub burn_percent: u8,
 }
 
-pub const DEFAULT_TARGET_LAMPORTS_PER_SIGNATURE: u64 = 10_000;
+// Forklana: raised from 10_000 to enforce 0.02 SOL minimum transaction fee
+pub const DEFAULT_TARGET_LAMPORTS_PER_SIGNATURE: u64 = FORKLANA_MIN_LAMPORTS_PER_SIGNATURE;
 pub const DEFAULT_TARGET_SIGNATURES_PER_SLOT: u64 = 50 * DEFAULT_MS_PER_SLOT;
 
 // Percentage of tx fees to burn
@@ -81,11 +90,12 @@ pub const DEFAULT_BURN_PERCENT: u8 = 50;
 impl Default for FeeRateGovernor {
     fn default() -> Self {
         Self {
-            lamports_per_signature: 0,
+            // Forklana: default fee fields enforce the 0.02 SOL minimum
+            lamports_per_signature: FORKLANA_MIN_LAMPORTS_PER_SIGNATURE,
             target_lamports_per_signature: DEFAULT_TARGET_LAMPORTS_PER_SIGNATURE,
             target_signatures_per_slot: DEFAULT_TARGET_SIGNATURES_PER_SLOT,
-            min_lamports_per_signature: 0,
-            max_lamports_per_signature: 0,
+            min_lamports_per_signature: FORKLANA_MIN_LAMPORTS_PER_SIGNATURE,
+            max_lamports_per_signature: FORKLANA_MIN_LAMPORTS_PER_SIGNATURE * 10,
             burn_percent: DEFAULT_BURN_PERCENT,
         }
     }

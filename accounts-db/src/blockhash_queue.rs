@@ -1,3 +1,7 @@
+// Forklana: The blockhash queue stores per-slot fee rates. Every registered hash
+// must carry at least FORKLANA_MIN_LAMPORTS_PER_SIGNATURE so clients always see
+// the 0.02 SOL minimum when querying recent blockhash fees.
+// TODO(forklana): clamp fee_calculator in register_hash() to the minimum
 #[allow(deprecated)]
 use solana_sdk::sysvar::recent_blockhashes;
 use {

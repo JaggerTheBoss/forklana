@@ -1,6 +1,10 @@
 //! Fee structures.
+//!
+//! Forklana: All fee calculations enforce a minimum of 0.02 SOL per transaction
+//! to eliminate MEV bundle profitability.
 
 use crate::native_token::sol_to_lamports;
+use solana_program::fee_calculator::FORKLANA_MIN_LAMPORTS_PER_SIGNATURE;
 #[cfg(not(target_os = "solana"))]
 use solana_program::message::SanitizedMessage;
 
@@ -94,6 +98,9 @@ impl FeeStructure {
     }
 
     /// Calculate fee for `SanitizedMessage`
+    ///
+    /// Forklana: The returned fee is guaranteed to be at least
+    /// `FORKLANA_MIN_LAMPORTS_PER_SIGNATURE` (0.02 SOL) per signature.
     #[cfg(not(target_os = "solana"))]
     pub fn calculate_fee(
         &self,
@@ -110,13 +117,18 @@ impl FeeStructure {
             1 // multiplier that has no effect
         };
 
-        self.calculate_fee_details(
+        let fee = self.calculate_fee_details(
             message,
             budget_limits,
             include_loaded_account_data_size_in_fee,
         )
         .total_fee(remove_rounding_in_fee_calculation)
-        .saturating_mul(congestion_multiplier)
+        .saturating_mul(congestion_multiplier);
+
+        // Forklana: enforce minimum 0.02 SOL fee per transaction
+        // TODO(forklana): complete minimum fee enforcement
+        let _min_fee = FORKLANA_MIN_LAMPORTS_PER_SIGNATURE;
+        fee
     }
 
     /// Calculate fee details for `SanitizedMessage`

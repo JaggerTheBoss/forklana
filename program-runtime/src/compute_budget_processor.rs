@@ -1,3 +1,7 @@
+// Forklana: Compute budget pricing interacts with the 0.02 SOL base fee.
+// Prioritization fees are added ON TOP of the minimum, so users still benefit
+// from priority tipping while bundles remain uneconomical.
+// TODO(forklana): validate that prioritization_fee + base_fee >= minimum
 use {
     crate::{
         compute_budget::DEFAULT_HEAP_COST,

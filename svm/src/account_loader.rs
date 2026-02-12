@@ -1,3 +1,6 @@
+// Forklana: This module validates that fee payers can cover the minimum 0.02 SOL
+// transaction fee. The higher floor prevents MEV bundle spam at the validation layer.
+// TODO(forklana): add explicit minimum-fee check in validate_fee_payer()
 use {
     crate::{
         account_overrides::AccountOverrides, account_rent_state::RentState,

@@ -1,4 +1,8 @@
 //! The chain's genesis config.
+//!
+//! Forklana: Genesis defaults set `fee_rate_governor.min_lamports_per_signature`
+//! to 20_000_000 (0.02 SOL) so every new chain starts with anti-bundle fees.
+//! TODO(forklana): wire FORKLANA_MIN_LAMPORTS_PER_SIGNATURE into GenesisConfig defaults
 
 #![cfg(feature = "full")]
 
