@@ -1,3 +1,6 @@
+// Forklana: Spend utilities factor in the 0.02 SOL minimum fee when estimating
+// total transaction cost and remaining balance.
+// TODO(forklana): ensure get_fee_for_messages returns at least 0.02 SOL
 use {
     crate::{
         checks::{check_account_for_balance_with_commitment, get_fee_for_messages},

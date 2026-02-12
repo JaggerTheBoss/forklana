@@ -1,3 +1,7 @@
+// Forklana: The consumer validates fee payers and drops transactions that do not
+// meet the 0.02 SOL minimum. This prevents low-fee bundle spam from consuming
+// block space.
+// TODO(forklana): reject transactions below FORKLANA_MIN_LAMPORTS_PER_SIGNATURE
 use {
     super::{
         committer::{CommitTransactionDetails, Committer, PreBalanceInfo},

@@ -1,3 +1,6 @@
+// Forklana: Prioritization fee cache tracks per-block fees inclusive of the
+// 0.02 SOL minimum. Cache entries reflect the elevated base + priority total.
+// TODO(forklana): update cache metrics for Forklana fee regime
 use {
     crate::{bank::Bank, compute_budget_details::GetComputeBudgetDetails, prioritization_fee::*},
     crossbeam_channel::{unbounded, Receiver, Sender},

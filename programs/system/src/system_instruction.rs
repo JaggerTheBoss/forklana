@@ -1,3 +1,7 @@
+// Forklana: System program instructions (transfer, create_account, etc.) are
+// subject to the 0.02 SOL minimum transaction fee. Nonce advance also stores
+// the Forklana fee floor in durable nonce state.
+// TODO(forklana): enforce minimum in advance_nonce_account fee_calculator
 use {
     solana_program_runtime::{ic_msg, invoke_context::InvokeContext},
     solana_sdk::{

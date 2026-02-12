@@ -1,3 +1,6 @@
+// Forklana: Prioritization fees are additive on top of the 0.02 SOL base fee.
+// This ensures users can still tip for priority while bundles remain unviable.
+// TODO(forklana): track effective total fee (base + priority) in metrics
 use {
     solana_measure::measure,
     solana_sdk::{clock::Slot, pubkey::Pubkey, saturating_add_assign},

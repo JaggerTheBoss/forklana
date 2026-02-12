@@ -1,3 +1,6 @@
+// Forklana: Banks interface defines the RPC contract for fee queries between
+// validator and client. Fee responses include the 0.02 SOL minimum.
+// TODO(forklana): add ForklanaFeeInfo type to the interface
 #![allow(deprecated)]
 
 use {

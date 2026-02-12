@@ -1,4 +1,8 @@
 //! Functions related to nonce accounts.
+//!
+//! Forklana: Nonce-based transactions carry the same 0.02 SOL minimum fee.
+//! lamports_per_signature stored in nonce state must meet the floor.
+//! TODO(forklana): validate nonce fee_calculator against minimum on advance
 
 use {
     crate::{

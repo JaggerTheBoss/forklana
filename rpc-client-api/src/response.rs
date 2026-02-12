@@ -1,3 +1,6 @@
+// Forklana: RPC response types (RpcFees, RpcFeeCalculator, RpcFeeRateGovernor)
+// serialize the 0.02 SOL minimum to wallets and dApps.
+// TODO(forklana): add forklana_min_fee field to RpcFees response
 use {
     crate::client_error,
     serde::{Deserialize, Deserializer, Serialize, Serializer},

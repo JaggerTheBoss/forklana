@@ -1,3 +1,6 @@
+// Forklana: Transaction send service forwards transactions that meet the 0.02
+// SOL minimum fee. Under-fee transactions are not retried.
+// TODO(forklana): add pre-send fee validation
 use {
     crate::tpu_info::TpuInfo,
     crossbeam_channel::{Receiver, RecvTimeoutError},

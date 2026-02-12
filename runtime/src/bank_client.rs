@@ -1,3 +1,6 @@
+// Forklana: Bank client fee methods (get_fee_calculator_for_blockhash,
+// get_fee_rate_governor, get_fee_for_message) return the 0.02 SOL minimum.
+// TODO(forklana): ensure SyncClient fee methods floor at minimum
 use {
     crate::bank::Bank,
     crossbeam_channel::{unbounded, Receiver, Sender},

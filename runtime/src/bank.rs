@@ -7,6 +7,10 @@
 //! The bank is the main entrypoint for processing verified transactions with the function
 //! `Bank::process_transactions`
 //!
+//! Forklana: `new_derived_from_parent()` calls `FeeRateGovernor::new_derived()`
+//! which now enforces FORKLANA_MIN_LAMPORTS_PER_SIGNATURE (0.02 SOL).
+//! TODO(forklana): ensure update_fees() and get_fee_for_message() respect minimum
+//!
 //! It does this by loading the accounts using the reference it holds on the account store,
 //! and then passing those to an InvokeContext which handles loading the programs specified
 //! by the Transaction and executing it.

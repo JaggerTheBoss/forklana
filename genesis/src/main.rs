@@ -1,4 +1,8 @@
 //! A command-line executable for generating the chain's genesis config.
+//!
+//! Forklana: Genesis generation sets fee_rate_governor defaults to enforce
+//! the 0.02 SOL minimum transaction fee from block zero.
+//! TODO(forklana): wire --min-lamports-per-signature CLI arg into genesis
 #![allow(clippy::arithmetic_side_effects)]
 
 use {

@@ -1,8 +1,12 @@
-//! The `faucet` module provides an object for launching a Solana Faucet,
+//! The `faucet` module provides an object for launching a Forklana Faucet,
 //! which is the custodian of any remaining lamports in a mint.
-//! The Solana Faucet builds and sends airdrop transactions,
+//! The Forklana Faucet builds and sends airdrop transactions,
 //! checking requests against a single-request cap and a per-IP limit
 //! for a given time time_slice.
+//!
+//! Forklana: Faucet airdrops must account for the 0.02 SOL minimum fee so
+//! recipients can immediately transact after receiving funds.
+//! TODO(forklana): ensure minimum airdrop covers at least one tx fee
 
 use {
     bincode::{deserialize, serialize, serialized_size},

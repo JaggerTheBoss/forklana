@@ -5,6 +5,10 @@
 //! [JSON-RPC], using the [`RpcClient`] type.
 //!
 //! [JSON-RPC]: https://www.jsonrpc.org/specification
+//!
+//! Forklana: Async RPC client fee methods return the 0.02 SOL minimum when
+//! querying getFeeForMessage or getRecentBlockhash.
+//! TODO(forklana): client-side fee estimation should floor at 0.02 SOL
 
 pub use crate::mock_sender::Mocks;
 #[allow(deprecated)]

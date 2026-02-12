@@ -1,3 +1,5 @@
+// Forklana: Banks server relays the 0.02 SOL minimum fee to test harness clients.
+// TODO(forklana): ensure get_fees_with_commitment returns Forklana minimum
 use {
     bincode::{deserialize, serialize},
     crossbeam_channel::{unbounded, Receiver, Sender},

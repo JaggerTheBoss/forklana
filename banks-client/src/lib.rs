@@ -4,6 +4,9 @@
 //! access its methods. Additional "*_with_context" methods are also available,
 //! but they are undocumented, may change over time, and are generally more
 //! cumbersome to use.
+//!
+//! Forklana: Banks client fee queries return the 0.02 SOL minimum floor.
+//! TODO(forklana): update get_fees() to reflect Forklana fee structure
 
 pub use {
     crate::error::BanksClientError,

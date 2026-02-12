@@ -1,6 +1,11 @@
 //! The `banking_stage` processes Transaction messages. It is intended to be used
 //! to construct a software pipeline. The stage uses all available CPU cores and
 //! can do its processing in parallel with signature verification on the GPU.
+//!
+//! Forklana: Transactions below the 0.02 SOL minimum fee are rejected at the
+//! banking stage before reaching execution. This is the primary enforcement
+//! point that eradicates MEV bundles.
+//! TODO(forklana): add minimum fee rejection logic in the consumer pipeline
 
 use {
     self::{

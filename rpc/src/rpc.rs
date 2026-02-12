@@ -1,4 +1,8 @@
 //! The `rpc` module implements the Solana RPC interface.
+//!
+//! Forklana: RPC endpoints getFeeForMessage, getFees, and getRecentBlockhash
+//! return the Forklana minimum 0.02 SOL fee floor to connected wallets.
+//! TODO(forklana): verify all fee-returning RPC methods reflect the minimum
 use {
     crate::{
         max_slots::MaxSlots, optimistically_confirmed_bank_tracker::OptimisticallyConfirmedBank,

@@ -1,3 +1,6 @@
+// Forklana: CLI balance checks account for the higher 0.02 SOL minimum fee when
+// verifying that accounts have sufficient funds for transactions.
+// TODO(forklana): update fee estimation to use FORKLANA_MIN_LAMPORTS_PER_SIGNATURE
 use {
     crate::cli::CliError,
     solana_rpc_client::rpc_client::RpcClient,

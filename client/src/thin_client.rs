@@ -2,6 +2,9 @@
 //! a server-side TPU.  Client code should use this object instead of writing
 //! messages to the network directly. The binary encoding of its messages are
 //! unstable and may change in future releases.
+//!
+//! Forklana: Thin client fee governor queries return the 0.02 SOL floor.
+//! TODO(forklana): update get_fee_rate_governor to reflect Forklana minimum
 #[allow(deprecated)]
 use {
     crate::connection_cache::{dispatch, ConnectionCache},

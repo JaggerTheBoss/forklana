@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/JaggerTheBoss/forklana">
-    <img alt="Forklana" src="https://i.imgur.com/IKyzQ6T.png" width="250" />
+    <img alt="Forklana" src="forklana.png" width="250" />
   </a>
 </p>
 
@@ -8,15 +8,32 @@
 
 **Forklana** is a fork of [Solana](https://github.com/solana-labs/solana) with a **minimum 0.02 SOL transaction fee** designed to eradicate transaction bundles (MEV bundles). By enforcing a higher base fee, Forklana makes sandwich attacks, frontrunning, and other MEV bundle strategies economically unviable, creating a fairer network for all users.
 
-## Key Difference from Solana
+## Key Differences from Solana
 
 | | Solana | Forklana |
 |---|---|---|
-| **Minimum Transaction Fee** | ~0.000005 SOL | **0.02 SOL** |
+| **Minimum Swap Fee** | ~0.000005 SOL | **0.02 SOL** |
 | **MEV Bundles** | Rampant | Economically unviable |
 | **Sandwich Attacks** | Common | Eradicated |
+| **Excess Fee Usage** | Burned (50%) | **Buyback & Burn** |
 
-The 0.02 SOL minimum fee makes it prohibitively expensive to spam the network with the large volumes of transactions required for bundle-based MEV extraction. Bundlers rely on razor-thin margins across many transactions — a higher base fee destroys that model entirely.
+### Swap-Only Fee
+
+The 0.02 SOL minimum fee **applies specifically to swap transactions** (token-to-token exchanges on DEXs). Standard transfers, account creation, staking, and other non-swap operations retain Solana's default fee structure. This targeted approach eliminates MEV bundles where they cause the most harm — on-chain swaps — without increasing costs for everyday transactions.
+
+Bundlers rely on razor-thin margins across many swap transactions. A higher base fee on swaps destroys that model entirely, making sandwich attacks and frontrunning economically unviable.
+
+### Buyback & Burn Mechanism
+
+Any excess fees collected above the network's base operating cost are used to **buy back and burn the tokens that were used in the swap**. This creates a deflationary feedback loop:
+
+1. User performs a swap and pays the 0.02 SOL fee.
+2. The base network fee is distributed to validators as normal.
+3. The **remaining excess fee** is routed to a protocol-owned buyback module.
+4. The buyback module purchases the token(s) involved in the swap on the open market.
+5. The purchased tokens are **permanently burned**, reducing circulating supply.
+
+This mechanism directly benefits holders of any token traded on Forklana — the more a token is swapped, the more of it gets bought back and burned.
 
 ---
 

@@ -2,6 +2,10 @@
 //! Provides logic and functions to allow a Leader to prioritize
 //! how transactions are included in blocks, and optimize those blocks.
 //!
+//! Forklana: QoS prioritization benefits from the 0.02 SOL floor — all
+//! transactions carry meaningful fee weight, improving priority ordering.
+//! TODO(forklana): update cost model to account for elevated base fee
+//!
 
 use {
     super::{committer::CommitTransactionDetails, BatchedTransactionDetails},

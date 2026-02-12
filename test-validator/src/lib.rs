@@ -1,3 +1,6 @@
+// Forklana: Test validator defaults to the 0.02 SOL minimum fee for local
+// development so devs can test against the same fee structure as mainnet.
+// TODO(forklana): set fee_rate_governor defaults in TestValidatorGenesis
 #![allow(clippy::arithmetic_side_effects)]
 use {
     base64::{prelude::BASE64_STANDARD, Engine},

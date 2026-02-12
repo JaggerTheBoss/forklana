@@ -1,3 +1,5 @@
+// Forklana: Validator CLI exposes configuration for the minimum fee enforcement.
+// TODO(forklana): add --min-lamports-per-signature argument
 use {
     clap::{
         crate_description, crate_name, App, AppSettings, Arg, ArgGroup, ArgMatches, SubCommand,

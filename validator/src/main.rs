@@ -1,3 +1,6 @@
+// Forklana: Validator startup initializes FeeRateGovernor with the 0.02 SOL
+// minimum fee. Nodes that join the network automatically enforce anti-bundle fees.
+// TODO(forklana): add --forklana-min-fee flag for validator configuration
 #![allow(clippy::arithmetic_side_effects)]
 #[cfg(not(target_env = "msvc"))]
 use jemallocator::Jemalloc;
