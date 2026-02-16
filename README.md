@@ -37,18 +37,6 @@ This mechanism directly benefits holders of any token traded on Forklana — the
 
 ---
 
-## Support the Project
-
-If you believe in a fairer chain without bundling and MEV exploitation, you can support Forklana by picking up **$Forklana**:
-
-```
-J45ac5fszvYGcBeQzM2UDTgCUpLRbqaiLUBNTWfnpump
-```
-
-Every holder helps fuel the vision of a cleaner Solana.
-
----
-
 ## Connecting to Forklana with Backpack Wallet
 
 [Backpack](https://backpack.app/) is the recommended wallet for connecting to the Forklana network.
