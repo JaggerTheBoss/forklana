@@ -1,14 +1,18 @@
 comment:
   behavior: default
   layout: diff
-  require_changes: false
+  require_changes: true
 coverage:
-  precision: 1
+  precision: 2
   range:
-  - 50.0
+  - 60.0
   - 100.0
   round: down
   status:
-    patch: false
-    project: false
+    patch:
+      default:
+        threshold: 1%
+    project:
+      default:
+        threshold: 1%
 github_checks: false
